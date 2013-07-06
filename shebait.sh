@@ -60,8 +60,11 @@ xml_result() {
 		cat "$3" >> $RESULT_FILE.tmp
 		echo "]]></system-err>" >> $RESULT_FILE.tmp
 		;;
-	end)
+	endcase)
 		echo "    </testcase>" >> $RESULT_FILE.tmp
+		;;
+	end)
+		echo "</testsuite>" >> $RESULT_FILE.tmp
 		;;
 	*)
 		echo "Invalid argument: $@"
@@ -118,11 +121,11 @@ for each in tests/!(*.*); do
 		xml_result error "$msg"
 	fi
 	xml_result output "$stdout" "$stderr"
-	xml_result end
+	xml_result endcase
 	rm -f "$stdout"
 	rm -f "$stderr"
 done
-echo "</testsuite>" >> $RESULT_FILE.tmp
+xml_result end
 
 endtime=$(date +%s%N)
 elapsed=$(( ( $endtime - $starttime ) / 1000000 ))
