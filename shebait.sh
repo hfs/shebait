@@ -7,7 +7,7 @@ if [ "$1" = "-h" -o "$1" = "--help" ]; then
 	Run all tests in the directory 'tests'. Their exit code indicates success
 	(0), test failure (1) or other errors (>1).
 	
-	Only files which names do *not* contain a dot '.' are executed. This allows
+	Only files whose names do *not* contain a dot '.' are executed. This allows
 	you to disable tests by giving them a file name suffix or to store helper
 	functions in .sh files.
 	
