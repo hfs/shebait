@@ -37,6 +37,8 @@ Put your tests in shell scripts and declare them with e.g. `#!/bin/bash -e`. Thi
 
 Write many small test rather than one big one.
 
+The tests are executed in directory order.
+
 During execution standard output and error of the tests are silenced. They are redirected to the result XML file instead. Check this file to find out what went wrong. You can `set -x` in your test to see which commands were executed.
 
 There is no provided test set-up or tear-down. You have to start and stop any services you want to test yourself and clean up temporary files.
